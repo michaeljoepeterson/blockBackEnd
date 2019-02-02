@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const passport = require('passport');
 const app = express();
 const bodyParser = require("body-parser");
+const {router: userRouter} = require('./users/router');
+const {router: authRouter} = require('./auth/router');
+const {localStrategy, jwtStrategy} = require('./auth/strategies');
 const jsonParser = bodyParser.json();
 const {PORT, DATABASE_URL } = require('./config');
 mongoose.Promise = global.Promise;
@@ -17,6 +20,10 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(jsonParser);
+app.use("/api/users", userRouter);
+app.use("/api/auth", authRouter);
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 function runServer(databaseUrl, port = PORT) {
 
