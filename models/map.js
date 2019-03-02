@@ -7,7 +7,7 @@ const mapSchema = mongoose.Schema({
 	adjacentMaps:{type:Object}
 });
 
-mapSchema.serialize = function(){
+mapSchema.methods.serialize = function(){
 	return{
 		mapName:this.mapName,
 		id:this._id,

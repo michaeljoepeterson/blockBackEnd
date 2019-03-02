@@ -7,7 +7,7 @@ const gameObjectSchema = mongoose.Schema({
 	animation:{type:Array}
 });
 
-gameObjectSchema.serialize = function(){
+gameObjectSchema.methods.serialize = function(){
 	return{
 		gameObjectName:this.gameObjectName,
 		id:this._id,

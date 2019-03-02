@@ -10,7 +10,7 @@ const gameSchema = mongoose.Schema({
 	gameObjects[{type:mongoose.Schema.Types.ObjectId,ref:"GameObject",unique:false,required:[false,"No GameObjects found"]}]
 });
 
-gameSchema.serialize = function(){
+gameSchema.methods.serialize = function(){
 	return{
 		gameName:this.gameName,
 		id:this._id,

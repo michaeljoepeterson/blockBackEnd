@@ -7,10 +7,7 @@ const router = express.Router();
 const createAuthToken = function(user){
 	return jwt.sign({user:
 		{
-			username:user.username,
-			id:user.id,
-			heroes:user.heroes,
-			matches:user.matches
+			username:user.username
 		}
 	}, config.JWT_SECRET,{
 		subject: user.username,

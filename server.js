@@ -6,6 +6,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const {router: userRouter} = require('./users/router');
 const {router: authRouter} = require('./auth/router');
+const {router: characterRouter} = require('./character/router');
 const {localStrategy, jwtStrategy} = require('./auth/strategies');
 const jsonParser = bodyParser.json();
 const {PORT, DATABASE_URL } = require('./config');
@@ -22,6 +23,7 @@ app.use(function (req, res, next) {
 app.use(jsonParser);
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/character", characterRouter);
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
